@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foot World - B2B Footwear Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="header-top">
+            <button class="hamburger-menu" onclick="toggleSlideMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo-container">
+                <img src="assets/logo.svg" alt="Foot World" class="logo">
+            </div>
+            <button class="notification-btn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+        </div>
+        <div class="search-container">
+            <div class="category-dropdown">
+                <select id="categorySelect">
+                    <option>Footwear ▼</option>
+                    <option>Men's Shoes</option>
+                    <option>Women's Shoes</option>
+                    <option>Kids Shoes</option>
+                    <option>Sports Shoes</option>
+                </select>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Desktop Header -->
+    <header class="desktop-header">
+        <div class="desktop-nav">
+            <div class="logo-container">
+                <img src="assets/logo.svg" alt="Foot World" class="logo">
+            </div>
+            <nav class="main-nav">
+                <a href="#home" onclick="navigateToPage('home'); return false;">Home</a>
+                <a href="#products" onclick="showProducts(); return false;">Products</a>
+                <a href="#orders" onclick="navigateToPage('orders'); return false;">Orders</a>
+                <a href="#about" onclick="showAbout(); return false;">About</a>
+                <a href="#contact" onclick="showContact(); return false;">Contact</a>
+            </nav>
+            <div class="desktop-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="admin-login-btn" onclick="showAdminLogin()">Admin Login</button>
+                <button class="logout-btn-desktop" onclick="logout()" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- KYC Banner -->
+    <section class="kyc-banner">
+        <div class="banner-content">
+            <h2>Verify Now and Launch your Business</h2>
+            <p>Complete KYC to unlock exclusive B2B pricing and features</p>
+            <button class="verify-btn" onclick="startKYC()">Verify Now</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page Content (Default) -->
+        <div id="home-page" class="page-content active">
+            <!-- Trending Categories -->
+            <section class="trending-categories">
+                <h2>Trending Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="navigateToCategory('boys-sports')">
+                        <div class="category-image">
+                            <img src="https://picsum.photos/seed/boys-sports/150/150.jpg" alt="Boys Sports Shoes">
+                        </div>
+                        <h3>Boys Sports Shoe</h3>
+                        <p>Min Order: 50 pairs</p>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('mens-sports')">
+                        <div class="category-image">
+                            <img src="https://picsum.photos/seed/mens-sports/150/150.jpg" alt="Men's Sports Shoes">
+                        </div>
+                        <h3>Men's Sports Shoes</h3>
+                        <p>Min Order: 30 pairs</p>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womens-flats')">
+                        <div class="category-image">
+                            <img src="https://picsum.photos/seed/womens-flats/150/150.jpg" alt="Women's Flats">
+                        </div>
+                        <h3>Women's Flats</h3>
+                        <p>Min Order: 40 pairs</p>
+                    </div>
+                    <div class="category-card" onclick="navigateToCategory('womens-heels')">
+                        <div class="category-image">
+                            <img src="https://picsum.photos/seed/womens-heels/150/150.jpg" alt="Women's Heels">
+                        </div>
+                        <h3>Women's Heels</h3>
+                        <p>Min Order: 25 pairs</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="featured-products">
+                <h2>Featured Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/product1/200/200.jpg" alt="Product">
+                            <span class="product-badge">New</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Sports Shoe</h3>
+                            <p class="product-code">FW-001</p>
+                            <div class="price-info">
+                                <span class="price">₹1,299</span>
+                                <span class="moq">MOQ: 30</span>
+                            </div>
+                            <div class="stock-info">
+                                <span class="stock-status">In Stock: 500</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/product2/200/200.jpg" alt="Product">
+                            <span class="product-badge">Hot</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Comfort Flat</h3>
+                            <p class="product-code">FW-002</p>
+                            <div class="price-info">
+                                <span class="price">₹899</span>
+                                <span class="moq">MOQ: 40</span>
+                            </div>
+                            <div class="stock-info">
+                                <span class="stock-status">In Stock: 750</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/product3/200/200.jpg" alt="Product">
+                        </div>
+                        <div class="product-info">
+                            <h3>Formal Leather Shoe</h3>
+                            <p class="product-code">FW-003</p>
+                            <div class="price-info">
+                                <span class="price">₹2,199</span>
+                                <span class="moq">MOQ: 20</span>
+                            </div>
+                            <div class="stock-info">
+                                <span class="stock-status">In Stock: 200</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sticky KYC Card -->
+    <div class="sticky-kyc-card" id="stickyKycCard">
+        <div class="kyc-card-content">
+            <div class="kyc-card-text">
+                <h4>Unlock prices!</h4>
+                <p>Complete your KYC and start ordering.</p>
+            </div>
+            <button class="start-kyc-btn" onclick="startKYC()">Start KYC ✔</button>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="#home" class="nav-item active" onclick="navigateToPage('home'); return false;">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#orders" class="nav-item" onclick="navigateToPage('orders'); return false;">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Orders</span>
+        </a>
+        <a href="#profile" class="nav-item" onclick="navigateToPage('profile'); return false;">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <nav class="footer-nav">
+                    <a href="#home" onclick="navigateToPage('home'); return false;">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#orders" onclick="navigateToPage('orders'); return false;">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Orders</span>
+                    </a>
+                    <a href="#profile" onclick="navigateToPage('profile'); return false;">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about" onclick="showAbout(); return false;">About Us</a></li>
+                    <li><a href="#contact" onclick="showContact(); return false;">Contact</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#returns">Returns</a></li>
+                    <li><a href="#shipping">Shipping Info</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#linkedin"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> support@footworld.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                <img src="assets/logo.svg" alt="Foot World" style="height: 40px;">
+            </div>
+            <p>&copy; 2024 Foot World. All rights reserved.</p>
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide Menu -->
+    <div class="slide-menu" id="slideMenu">
+        <div class="slide-menu-header">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <span>FW</span>
+                </div>
+                <div class="profile-info">
+                    <h3>Foot World</h3>
+                    <span class="verification-status">Unverified</span>
+                </div>
+            </div>
+            <button class="close-menu" onclick="toggleSlideMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="slide-menu-content">
+            <div class="menu-section">
+                <a href="#profile" class="menu-item" onclick="navigateToPage('profile'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#update-profile" class="menu-item" onclick="editProfile(); toggleSlideMenu(); return false;">
+                    <i class="fas fa-edit"></i>
+                    <span>Update Profile</span>
+                </a>
+                <a href="#referral" class="menu-item" onclick="showNotification('Referral feature coming soon', 'info'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-gift"></i>
+                    <span>Enter Referral Code</span>
+                </a>
+            </div>
+            <div class="menu-section">
+                <a href="#order-management" class="menu-item" onclick="showNotification('Order management feature coming soon', 'info'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-tasks"></i>
+                    <span>Order Management</span>
+                </a>
+                <a href="#my-orders" class="menu-item" onclick="navigateToPage('orders'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>My Orders</span>
+                </a>
+                <a href="#compliance" class="menu-item" onclick="showNotification('Compliance feature coming soon', 'info'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Compliance</span>
+                </a>
+                <a href="#returns" class="menu-item" onclick="showNotification('Return policy feature coming soon', 'info'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-undo"></i>
+                    <span>Return Policy</span>
+                </a>
+            </div>
+            <div class="menu-section">
+                <a href="#help" class="menu-item" onclick="showNotification('Help & Support feature coming soon', 'info'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help & Support</span>
+                </a>
+                <a href="#terms" class="menu-item" onclick="showNotification('Terms of Use feature coming soon', 'info'); toggleSlideMenu(); return false;">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Terms of Use</span>
+                </a>
+                <a href="#logout" class="menu-item logout" onclick="logout(); toggleSlideMenu(); return false;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Foot World</h2>
+                <button class="close-modal" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-tabs">
+                    <button class="tab-btn active" onclick="switchLoginTab('retailer')">Retailer Login</button>
+                    <button class="tab-btn" onclick="switchLoginTab('seller')">Seller Login</button>
+                </div>
+                <form class="login-form" id="retailerLogin">
+                    <div class="form-group">
+                        <input type="text" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Send OTP</button>
+                    <div class="divider">OR</div>
+                    <button type="button" class="google-login-btn">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                </form>
+                <form class="login-form hidden" id="sellerLogin">
+                    <div class="form-group">
+                        <input type="text" placeholder="Business Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                    <div class="divider">OR</div>
+                    <button type="button" class="google-login-btn">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                </form>
+                <p class="signup-link">
+                    New to Foot World? <a href="#signup">Register your business</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- KYC Modal -->
+    <div class="modal" id="kycModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Complete Your KYC</h2>
+                <button class="close-modal" onclick="closeModal('kycModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="kyc-steps">
+                    <div class="step active">
+                        <div class="step-number">1</div>
+                        <span>Business Details</span>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <span>Document Upload</span>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <span>Verification</span>
+                    </div>
+                </div>
+                <form class="kyc-form">
+                    <div class="form-group">
+                        <label>Business Name</label>
+                        <input type="text" placeholder="Enter your business name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>GST Number</label>
+                        <input type="text" placeholder="Enter GST number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>PAN Number</label>
+                        <input type="text" placeholder="Enter PAN number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Business Address</label>
+                        <textarea placeholder="Enter your business address" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Proceed to Document Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Admin Login</h2>
+                <button class="close-modal" onclick="closeModal('adminModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="admin-login-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Admin Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Admin Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login to Admin Panel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
